@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            git-stats
+            <% if not @repository.nil? then %>
+                | <%= @repository %>
+            <% end %>
+        </title>
+        <link type="text/css" href="/style.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/highcharts.js"></script>
+        <script type="text/javascript" src="/application.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <h1><a href="/">git-stats</a></h1>
+            <% if not @repository.nil? then %>
+                <h2><%= @repository %></h2>
+            <% end %>
+
+            <select id="repositories">
+            <% @repositories.each do |repository| %>
+                <option value="<%= repository %>"
+                <% if not @repository.nil? and repository == @repository then %>
+                    <%= 'selected="selected"' %>
+                <% end %>
+                    ><%= repository %></option>
+            <% end %>
+            </select>
+
+            <% if not @since.nil? then %>
+                <select id="since">
+                <% Hash[7 => 'Last week', 30 => 'Last month', 365 => 'Last year'].each do |key, value| %>
+                    <option value="<%= key %>"
+                    <% if key == @since then %>
+                        <%= 'selected="selected"' %>
+                    <% end %>
+                        ><%= value %></option>
+                <% end %>
+                </select>
+            <% end %>
+        </div>
+
+        <div id="content">
+            <%= yield %>
+        </div>
+
+        <div id="footer">
+            Powered by <a href="http://www.sinatrarb.com/">sinatra</a>, <a href="http://github.com/schacon/ruby-git">ruby-git</a> &amp; <a href="http://www.highcharts.com/">hightcharts</a>.
+        </div>
+    </body>
+</html>

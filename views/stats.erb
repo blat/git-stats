@@ -1,0 +1,73 @@
+<div id="by-date" class="chart"></div>
+<div id="by-hour" class="chart"></div>
+<div id="by-day-of-week" class="chart"></div>
+<div id="by-author" class="chart"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    new Highcharts.Chart({
+        chart: { renderTo: 'by-date', defaultSeriesType: 'line' },
+        title: { text: 'By date' },
+        xAxis: { categories: [
+        <% (0..@since).each do |n| %>
+            "<%= Date.today - @since + n %>",
+        <% end %>
+        ] },
+        yAxis: { min: 0, title: { text: 'Commit(s)' }, },
+        tooltip: { formatter: function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' commit(s)'; } },
+        legend: { align: 'right', verticalAlign: 'top', x: -50, y: 0 },
+        series: [{
+            name: 'Commit(s)',
+            data: [<%= @by_date.reverse.join(', ') %>]
+        }],
+        credits: { enabled: false }
+    });
+
+    new Highcharts.Chart({
+        chart: { renderTo: 'by-hour', defaultSeriesType: 'column' },
+        title: { text: 'By hour' },
+        xAxis: { categories: [<%= (0..24).to_a.join(', ') %>] },
+        yAxis: { min: 0, title: { text: 'Commit(s)' }, },
+        legend: { align: 'right', verticalAlign: 'top', x: -50, y: 0 },
+        tooltip: { formatter: function() { return ''+ this.x +'h: '+ this.y +' commit(s)'; } },
+        series: [{
+            name: 'Commit(s)',
+            data: [<%= @by_hour.join(', ') %>]
+        }],
+        credits: { enabled: false }
+    });
+
+    new Highcharts.Chart({
+        chart: { renderTo: 'by-day-of-week', defaultSeriesType: 'column' },
+        title: { text: 'By day of week' },
+        xAxis: { categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] },
+        yAxis: { min: 0, title: { text: 'Commit(s)' }, },
+        legend: { align: 'right', verticalAlign: 'top', x: -50, y: 0 },
+        tooltip: { formatter: function() { return ''+ this.x +': '+ this.y +' commit(s)'; } },
+        series: [{
+            name: 'Commit(s)',
+            data: [<%= @by_day_of_week.join(', ') %>]
+        }],
+        credits: { enabled: false }
+    });
+
+    new Highcharts.Chart({
+        chart: { renderTo: 'by-author' },
+        title: { text: 'By author' },
+        tooltip: { formatter: function() { return '<b>'+ this.point.name +'</b>: '+ this.y +' commit(s)'; } },
+        plotOptions: { pie: {  } },
+        legend: { layout: 'vertical', style: { left: '50px', top: '100px' } },
+        series: [{
+            type: 'pie',
+            data: [
+            <% @by_author.each do |key, value| %>
+                ["<%= key %>", <%= value %>],
+            <% end %>
+            ]
+        }],
+        credits: { enabled: false }
+    });
+
+});
+</script>
