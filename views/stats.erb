@@ -1,4 +1,4 @@
-<%= erb :line,      :locals => {:title => 'By date',            :data => @by_date} %>
-<%= erb :column,    :locals => {:title => 'By hour',            :data => @by_hour} %>
-<%= erb :column,    :locals => {:title => 'By day of week',     :data => @by_day_of_week} %>
-<%= erb :pie,       :locals => {:title => 'By author',          :data => @by_author} %>
+<%= erb :line,      :layout => false,   :locals => {:title => 'By date',            :data => @by_date} %>
+<%= erb :column,    :layout => false,   :locals => {:title => 'By hour',            :data => @by_hour} %>
+<%= erb :column,    :layout => false,   :locals => {:title => 'By day of week',     :data => @by_day_of_week} %>
+<%= erb :pie,       :layout => false,   :locals => {:title => 'By author',          :data => @by_author} %>
