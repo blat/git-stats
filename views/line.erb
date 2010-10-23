@@ -9,17 +9,27 @@ $(document).ready(function() {
         chart: { renderTo: 'chart-line-<%= id %>', defaultSeriesType: 'line' },
         title: { text: '<%= title %>' },
         xAxis: { categories: [
-        <% data.keys.each do |n| %>
+        <% if not multi then
+            categories = data.keys
+        else
+            categories = data[data.keys[0]].keys
+        end %>
+        <% categories.each do |n| %>
             "<%= n %>",
         <% end %>
         ] },
         yAxis: { min: 0, title: { text: 'Commit(s)' }, },
         tooltip: { formatter: function() { return '<b>'+ this.x +'</b>: '+ this.y +' commit(s)'; } },
         legend: { align: 'right', verticalAlign: 'top', x: -50, y: 0 },
-        series: [{
-            name: 'Commit(s)',
-            data: [<%= data.values.join(', ') %>]
-        }],
+        series: [
+        <% if not multi then %>
+            { name: 'Commit(s)', data: [<%= data.values.join(', ') %>] }
+        <% else %>
+            <% data.each do |key, values| %>
+            { name: "<%= key %>", data: [<%= values.values.join(', ') %>] },
+            <% end %>
+        <% end %>
+        ],
         credits: { enabled: false }
     });
 

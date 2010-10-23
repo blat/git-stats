@@ -1,9 +1,13 @@
 $(document).ready(function() {
     $('#repositories').change(function() {
-        window.location.href = '/' + $(this).val() + ($('#since').val() ? '/' + $('#since').val() : '');
+        window.location.href = '/project/' + $(this).val() + ($('#since').val() ? '/' + $('#since').val() : '');
     });
 
     $('#since').change(function() {
-        window.location.href = '/' + $('#repositories').val() + '/' + $(this).val();
+        if (document.URL.match('/project')) {
+            window.location.href = '/project/' + $('#repositories').val() + '/' + $(this).val();
+        } else {
+            window.location.href = '/' + $(this).val();
+        }
     });
 });
