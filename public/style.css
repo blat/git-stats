@@ -35,6 +35,10 @@ h2, a {
     float: left;
 }
 
+.multi .chart {
+    width: 100%;
+}
+
 #footer,
 #since,
 #repositories {

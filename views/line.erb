@@ -6,7 +6,11 @@
 $(document).ready(function() {
 
     new Highcharts.Chart({
-        chart: { renderTo: 'chart-line-<%= id %>', defaultSeriesType: 'line' },
+        chart: { renderTo: 'chart-line-<%= id %>', defaultSeriesType: 'line'
+        <% if multi then %>
+            , margin: [50, 250, 50, 50]
+        <% end %>
+        },
         title: { text: '<%= title %>' },
         xAxis: { categories: [
         <% if not multi then
@@ -20,7 +24,7 @@ $(document).ready(function() {
         ] },
         yAxis: { min: 0, title: { text: 'Commit(s)' }, },
         tooltip: { formatter: function() { return '<b>'+ this.x +'</b>: '+ this.y +' commit(s)'; } },
-        legend: { align: 'right', verticalAlign: 'top', x: -50, y: 0 },
+        legend: { layout: 'vertical', style: { right: '50px', top: '0px' } },
         series: [
         <% if not multi then %>
             { name: 'Commit(s)', data: [<%= data.values.join(', ') %>] }

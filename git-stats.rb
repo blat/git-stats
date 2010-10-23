@@ -23,8 +23,6 @@ get '/:since' do
 
         @by_date[repository] = {}
         (0..@since).each do |n|
-            puts repository
-            puts (Date.today - @since + n).strftime("%Y-%m-%d")
             @by_date[repository][(Date.today - @since + n).strftime("%Y-%m-%d")] = 0
         end
 

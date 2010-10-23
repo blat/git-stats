@@ -39,7 +39,7 @@
             </select>
         </div>
 
-        <div id="content">
+        <div id="content" <% if @multi then %>class="multi"<% end %>>
             <%= yield %>
         </div>
 
