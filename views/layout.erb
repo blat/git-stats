@@ -19,6 +19,7 @@
             <% end %>
 
             <select id="repositories">
+                <option value="">ALL</option>
             <% @repositories.each do |repository| %>
                 <option value="<%= repository %>"
                 <% if not @repository.nil? and repository == @repository then %>

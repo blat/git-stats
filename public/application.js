@@ -1,6 +1,10 @@
 $(document).ready(function() {
     $('#repositories').change(function() {
-        window.location.href = '/project/' + $(this).val() + ($('#since').val() ? '/' + $('#since').val() : '');
+        if ($(this).val()) {
+            window.location.href = '/project/' + $(this).val() + ($('#since').val() ? '/' + $('#since').val() : '');
+        } else {
+            window.location.href = ($('#since').val() ? '/' + $('#since').val() : '');
+        }
     });
 
     $('#since').change(function() {

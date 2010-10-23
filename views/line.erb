@@ -23,11 +23,11 @@ $(document).ready(function() {
         <% end %>
         ] },
         yAxis: { min: 0, title: { text: 'Commit(s)' }, },
-        tooltip: { formatter: function() { return '<b>'+ this.x +'</b>: '+ this.y +' commit(s)'; } },
+        tooltip: { formatter: function() { return '<b>'+ this.series.name +'<b/><br/>'+ this.x +' - '+ this.y +' commit(s)'; } },
         legend: { layout: 'vertical', style: { right: '50px', top: '0px' } },
         series: [
         <% if not multi then %>
-            { name: 'Commit(s)', data: [<%= data.values.join(', ') %>] }
+            { name: "<%= @repository %>", data: [<%= data.values.join(', ') %>] }
         <% else %>
             <% data.each do |key, values| %>
             { name: "<%= key %>", data: [<%= values.values.join(', ') %>] },

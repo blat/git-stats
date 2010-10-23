@@ -10,7 +10,7 @@ $(document).ready(function() {
         title: { text: '<%= title %>' },
         tooltip: { formatter: function() { return '<b>'+ this.point.name +'</b>: '+ this.y +' commit(s)'; } },
         plotOptions: { pie: {  } },
-        legend: { layout: 'vertical', style: { right: '0px', top: '0px' } },
+        legend: { layout: 'vertical', style: { right: <% if multi then %> '50px' <% else %> '0px' <% end %>, top: '0px' } },
         series: [{
             type: 'pie',
             data: [
