@@ -30,7 +30,7 @@
 
             <% if not @since.nil? then %>
                 <select id="since">
-                <% Hash[7 => 'Last week', 30 => 'Last month', 365 => 'Last year'].each do |key, value| %>
+                <% Hash[7 => 'Last week', 30 => 'Last month', 90 => 'Last quarter', 365 => 'Last year'].each do |key, value| %>
                     <option value="<%= key %>"
                     <% if key == @since then %>
                         <%= 'selected="selected"' %>
