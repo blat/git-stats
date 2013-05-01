@@ -1,7 +1,7 @@
 Git Stats
 =========
 
-Git Stats is a tools to display stats about git reprositories
+Git Stats is a tools to display stats about git reprositories.
 
 
 Dependances
@@ -16,7 +16,7 @@ Setup
 
 1. Install ruby and all dependancies (see above)
 
-2. Build data directory and checkout a few git reprositories:
+2. Build data directory and clone some git reprositories:
 
         mkdir data
         cd data
