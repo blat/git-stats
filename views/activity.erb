@@ -1,0 +1,25 @@
+<div class="chart">
+    <h3>Overall weekly activity</h3>
+    <%= partial :_charts, :type => 'area', :legend => ['Week', 'Commits'], :data => @repository.weekly_activity, :width => 920, :height => 290 %>
+    <%= partial :_charts, :type => 'area', :legend => ['Week', 'Insertions', 'Deletions'], :data => @repository.weekly_lines, :width => 920, :height => 290, :colors => ['green', 'red'] %>
+</div>
+
+<div class="chart">
+    <h3>By hour of day</h3>
+    <%= partial :_charts, :type => 'column', :legend => ['Hour', 'Commits'], :data => @repository.activity_per_hours, :width => 450, :height => 290, :vMin => 0 %>
+</div>
+
+<div class="chart">
+    <h3>By day of week</h3>
+    <%= partial :_charts, :type => 'bar', :legend => ['Day', 'Commits'], :data => @repository.activity_per_days, :width => 450, :height => 290, :hMin => 0 %>
+</div>
+
+<div class="chart">
+    <h3>By month of year</h3>
+    <%= partial :_charts, :type => 'bar', :legend => ['Month', 'Commits'], :data => @repository.activity_per_months, :width => 450, :height => 290, :hMin => 0 %>
+</div>
+
+<div class="chart">
+    <h3>By year</h3>
+    <%= partial :_charts, :type => 'column', :legend => ['Year', 'Commits'], :data => @repository.activity_per_years, :width => 450, :height => 290, :vMin => 0 %>
+</div>

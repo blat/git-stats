@@ -1,1 +1,28 @@
+<dl>
+    <dt>Total commits</dt>
+    <dd><%= @repository.commits_count %></dd>
 
+    <dt>Total contributors</dt>
+    <dd><%= @repository.contributors_count %></dd>
+
+    <dt>Average commits per contributor</dt>
+    <dd><%= @repository.average_commits_per_contributor %></dd>
+
+    <dt>Total lines</dt>
+    <dd><%= @repository.lines_count %> (<span class="add">+<%= @repository.insertions_count %></span> / <span class="del">-<%= @repository.deletions_count %></span>)</dd>
+
+    <dt>First commit date</dt>
+    <dd><%= @repository.first_commit_date.to_s %></dd>
+
+    <dt>Latest commit date</dt>
+    <dd><%= @repository.last_commit_date.to_s %></dd>
+
+    <dt>Age</dt>
+    <dd><%= @repository.days_count %> days</dd>
+
+    <dt>Active for</dt>
+    <dd><%= @repository.active_days_count %> days</dd>
+
+    <dt>Average commits per day</dt>
+    <dd><%= @repository.average_commits_per_active_day %></dd>
+</dl>

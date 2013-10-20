@@ -1,58 +1,126 @@
 html {
-  background: #fff;
-  color: #000;
-  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
-  padding: 0em;
+    background: white;
+    color: black;
+    font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+    padding: 0em;
 }
 
 body {
-  margin-left: 2.6em;
-  margin-top: 1.8em;
-  margin-bottom: 1em;
-  margin-right: 1em;
-  line-height: 1.4em;
-  font-size: .9em;
+    width: 950px;
+    margin: 1.8em auto;
+    font-size: .9em;
+    position: relative;
 }
 
-h1, h2 {
-    display: inline;
-    font-size: 2em;
+.nav {
+    text-transform: lowercase;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+.nav a {
+    color: lightgrey;
+    padding: 4px;
+    border-radius: 4px;
     font-weight: bold;
-}
-
-h1 a {
-    color: black;
     text-decoration: none;
 }
 
-h2, a {
+.nav a:hover {
     color: grey;
 }
 
-.chart {
-    margin-top: 50px;
-    width: 50%;
-    float: left;
+.nav .current a {
+    color: black;
 }
 
-.multi .chart {
-    width: 100%;
+#header {
+    text-transform: lowercase;
+    margin: 0;
+    padding: 0 10px;
+    margin-bottom: 20px;
 }
 
-#footer,
-#since,
-#repositories {
-    float: right;
-    margin-right: 50px;
+#header h1, #header h2 {
+    display: inline-block;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+#header h1, a {
+    color: grey;
+}
+
+#header h2 {
+    color: black;
 }
 
 #footer {
     clear: both;
-    padding-bottom: 25px;
+    text-align: right;
+    margin-top: 20px;
     color: gray;
+    padding: 0 10px;
     font-size: 0.8em;
 }
 
 #content {
     min-height: 90%;
 }
+
+dl,
+.chart {
+    display: inline-block;
+    border: 1px solid lightgrey;
+    margin: 10px;
+    border-radius: 4px;
+    padding-bottom: 2px;
+    position: relative;
+}
+
+h3 {
+    margin: 10px 20px;
+}
+
+.meta {
+    position: absolute;
+    top: 15px;
+    right: 55px;
+    margin: 0;
+    padding: 0;
+    color: grey;
+}
+.add {
+    color: green;
+}
+.del {
+    color: red;
+}
+
+small {
+    color: grey;
+}
+
+dl {
+    margin-left: 10px;
+    padding: 10px;
+}
+dt, dd {
+    display: inline-block;
+    width: 650px;
+    margin: 2px 0;
+}
+dt {
+    font-weight: bold;
+    width: 240px;
+    text-align: right;
+    margin-right: 10px;
+}
+

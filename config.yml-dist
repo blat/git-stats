@@ -1,0 +1,8 @@
+repository:
+    name: My awesome project
+    path: /path/to/your/repository
+
+cache:
+    host: localhost
+    port: 6379
+    database: 0

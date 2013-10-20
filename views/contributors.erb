@@ -1,0 +1,16 @@
+<div class="charts">
+    <% @repository.contributors.each_with_index do |contributor, index| %>
+    <div class="chart">
+        <h3><small>#<%= index + 1 %></small> <%= contributor.name %> </h3>
+        <small class="meta">
+            <span class="commits"><%= contributor.commits_count %> commits</span> 
+            /
+            <span class="add">+<%= contributor.insertions_count %></span>
+            /
+            <span class="del">-<%= contributor.deletions_count %></span>
+        </small>
+        <%= partial :_charts, :type => 'area', :legend => ['Week', 'Commits'], :data => contributor.weekly_activity, :vMax => @repository.max_weekly_commits_count, :width => 450, :height => 130 %>
+        <%= partial :_charts, :type => 'area', :legend => ['Week', 'Insertions', 'Deletions'], :data => contributor.weekly_lines, :vMax => @repository.max_weekly_insertions_count, :vMin => -@repository.max_weekly_deletions_count, :width => 450, :height => 130, :colors => ['green', 'red'] %>
+    </div>
+    <% end %>
+</div>

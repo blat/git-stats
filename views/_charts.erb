@@ -1,0 +1,47 @@
+<% id = SecureRandom.uuid %>
+
+<script type="text/javascript">
+    google.setOnLoadCallback(function() {
+        var data = google.visualization.arrayToDataTable(<%= JSON.generate [legend] + data %>);
+
+        var options = {
+            vAxis: {
+                <% if defined? vMin then %>
+                minValue: <%= vMin.to_i %>,
+                <% end %>
+                <% if defined? vMax then %>
+                maxValue: <%= vMax.to_i %>,
+                <% end %>
+                <% if defined? vTicks then %>
+                ticks: <%= JSON.generate(vTicks) %>,
+                <% end %>
+            },
+            hAxis: {
+                maxAlternation: 1,
+                <% if type == 'area' then %>
+                textPosition: 'none',
+                <% end %>
+                <% if defined? hMin then %>
+                minValue: <%= hMin.to_i %>,
+                <% end %>
+                <% if defined? hMax then %>
+                maxValue: <%= hMax.to_i %>,
+                <% end %>
+                <% if defined? hTicks then %>
+                ticks: <%= JSON.generate(hTicks) %>,
+                <% end %>
+            },
+            legend: {
+                position: 'none'
+            },
+            <% if defined? colors then %>
+            colors: <%= JSON.generate(colors) %>,
+            <% end %>
+        };
+
+        var chart = new google.visualization.<%= type.capitalize %><% if type != 'table' then %>Chart<% end %>(document.getElementById("chart_<%= id %>"));
+        chart.draw(data, options);
+    });
+</script>
+
+<div id="chart_<%= id %>" style="width: <%= width.to_i %>px; height: <%= height.to_i %>px;"></div>
