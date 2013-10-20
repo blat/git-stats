@@ -9,6 +9,7 @@ Dependances
 
 * sinatra
 * git
+* redis
 
 
 Setup
@@ -16,16 +17,17 @@ Setup
 
 1. Install ruby and all dependancies (see above)
 
-2. Build data directory and clone some git reprositories:
+2. Rename `config.yml-dist` in `config.yml`, then edit it (in particular, informations related to Git repository):
 
-        mkdir data
-        cd data
-        git clone https://github.com/path/to/repository1.git
-        git clone https://github.com/path/to/repository2.git
-        git clone https://github.com/path/to/repository3.git
+        name: My awesome project
+        path: /path/to/your/repository
 
-3. Launch application:
+3. Run script to import stats
 
-        ruby git-stats.rb
+        ruby import.rb
+        
+4. Launch application:
+
+        ruby app.rb
 
 4. Go to [http://localhost:4567](http://localhost:4567)
